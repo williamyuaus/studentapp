@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 class WeatherApp extends Component {
@@ -8,7 +8,7 @@ class WeatherApp extends Component {
     }
 
     componentDidMount() {
-        fetch('http://api.openweathermap.org/data/2.5/weather?q=Melbourne&units=Metric&APIkey=0013c08b32b019ca368c57f469a8cf8b')
+        fetch('http://api.openweathermap.org/data/2.5/weather?q=Chongqing&units=Metric&APIkey=0013c08b32b019ca368c57f469a8cf8b')
         .then(response => response.json())
         .then(responseData => {
             this.setState({
