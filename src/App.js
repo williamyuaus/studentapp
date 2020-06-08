@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import WeatherApp from './WeatherApp';
+import WeatherApp from './components/WeatherApp';
 import { AppBar } from '@material-ui/core';
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";

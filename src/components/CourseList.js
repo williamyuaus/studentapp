@@ -5,6 +5,11 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import MaUTable from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 import AddCourse from "./AddCourse";
 import EditCourse from "./EditCourse";
 
