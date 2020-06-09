@@ -17,7 +17,7 @@ What things you need to install the software and how to install them
 
 
 
-### Installing
+### Installing and Running
 
 A step by step series of examples that tell you how to get a development env running
 
@@ -29,16 +29,18 @@ A step by step series of examples that tell you how to get a development env run
 ```
 cd studentapp
 ```
-3. Then, you can run the app with the following command. This command runs the app in port `3000` and opens the app in a browser:
+3. Then, you can run the app with the following command. This command runs the app in port `3000`:
 
 ```
 npm start
 ```
 ![image](https://user-images.githubusercontent.com/60310380/84105202-f278c100-aa5a-11ea-8700-01ea475ee6ae.png)
+
+4. Open your browser and go to the URL: http://localhost:3000/, you can view the app as following:
 ![image](https://user-images.githubusercontent.com/60310380/84104672-86498d80-aa59-11ea-8192-5c37a5b63d99.png)
 
-4. To access the source code, using the VS code to open the project folder, or clone the repository of the program: https://github.com/williamyuaus/studentapp.git
-5. In your browser, you can add, edit and delete students in the app, such as following screenshots:
+5. To access the source code, using the VS code to open the project folder, or clone the repository of the program: https://github.com/williamyuaus/studentapp.git
+6. In your browser, you can add, edit and delete students in the app, such as following screenshots:
 ![image](https://user-images.githubusercontent.com/60310380/84104709-a416f280-aa59-11ea-853a-04eceb40126a.png)
 ![image](https://user-images.githubusercontent.com/60310380/84104765-c872cf00-aa59-11ea-8b6b-aee180b97bb7.png)
 ![image](https://user-images.githubusercontent.com/60310380/84104921-1ee00d80-aa5a-11ea-9317-1fe63547f5a1.png) 
@@ -47,12 +49,12 @@ npm start
 ## Built With
 
 * [React](https://reactjs.org/docs/getting-started.html) - The web framework used
-* [npm](https://docs.npmjs.com/) - Package Management
+* [npm](https://docs.npmjs.com/) - Package Manager
 
 ## Authors
 
-* **William YU** - *Initial work* - [William YU](https://github.com/williamyuaus)
+* **William Yu** - *Initial work* - [William Yu](https://github.com/williamyuaus)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

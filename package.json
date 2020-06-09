@@ -12,7 +12,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^2.1.8",
     "react-table": "^6.11.4",
-    "react-toastify": "^6.0.5"
+    "react-toastify": "^6.0.5",
+    "simple-react-validator": "^1.4.6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "istanbul-lib-coverage": "^3.0.0"
   }
 }

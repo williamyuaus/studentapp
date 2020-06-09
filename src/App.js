@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <img id="logo" name="logo" src="https://www.integradev.com.au/images/iad.png" alt="Integrated Application Development" />
-      <WeatherApp  />
+      <WeatherApp className="WeatherApp" />
       <AppBar position="static" color="default" >
           <Toolbar>
               <Typography variant="h6" color="inherit">

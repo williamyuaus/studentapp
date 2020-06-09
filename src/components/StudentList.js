@@ -89,10 +89,10 @@ class StudentList extends Component {
 
     render() {
         const columns = [{
-            Header: 'Student First Name',
+            Header: 'First Name',
             accessor: 'firstName'
         }, {
-            Header: 'Student Last Name',
+            Header: 'Last Name',
             accessor: 'lastName'
         }, {
             sortable: false,
