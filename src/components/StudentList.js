@@ -5,41 +5,42 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import AddCourse from "./AddCourse";
-import EditCourse from "./EditCourse";
+import AddStudent from "./AddStudent";
+import EditStudent from "./EditStudent";
+import {SERVER_URL} from "../constants";
 
-class CourseList extends Component {
+class StudentList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { courses: [] };
+        this.state = { students: [] };
     }
 
     componentDidMount() {
-        this.fetchCourses();
+        this.fetchStudents();
     }
 
-    fetchCourses = () => {
+    fetchStudents = () => {
         console.log("FETCH")
-        fetch('http://localhost:8080/api/courses')
+        fetch(SERVER_URL + 'api/students')
             .then((response) => response.json())
             .then((responseData) => {
                 this.setState( {
-                    courses: responseData._embedded.courses
+                    students: responseData._embedded.students
                 });
             })
             .catch(err => console.error(err));
     }
 
-    // Delete course
+    // Delete student
     onDelClick = (link) => {
         if (window.confirm('Are you sure to delete?')) {
             fetch(link, {method: 'DELETE'})
                 .then(res => {
-                    toast.success("Course deleted", {
+                    toast.success("Student deleted", {
                         position: toast.POSITION.BOTTOM_LEFT
                     });
-                    this.fetchCourses()
+                    this.fetchStudents()
                 })
                 .catch(err => {
                     toast.error("Error when deleting", {
@@ -50,34 +51,34 @@ class CourseList extends Component {
         }
     }
 
-    // Add new course
-    addCourse(course) {
-        fetch('http://localhost:8080/api/courses',
+    // Add new student
+    addStudent(student) {
+        fetch(SERVER_URL + 'api/students',
             {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(course)
+                body: JSON.stringify(student)
             })
-            .then(res => this.fetchCourses())
+            .then(res => this.fetchStudents())
             .catch(err => console.error(err))
     }
 
-    // Update course
-    updateCourse(course, link) {
+    // Update student
+    updateStudent(student, link) {
         fetch(link,
             { method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(course)
+                body: JSON.stringify(student)
             })
             .then(res => {
                 toast.success("Changes saved", {
                     position: toast.POSITION.BOTTOM_LEFT
                 });
-                this.fetchCourses();
+                this.fetchStudents();
             })
             .catch(err =>
                 toast.error("Error when saving", {
@@ -88,14 +89,17 @@ class CourseList extends Component {
 
     render() {
         const columns = [{
-            Header: 'Course Name',
-            accessor: 'name'
+            Header: 'Student First Name',
+            accessor: 'firstName'
+        }, {
+            Header: 'Student Last Name',
+            accessor: 'lastName'
         }, {
             sortable: false,
             filterable: false,
             width: 100,
             accessor: '_links.self.href',
-            Cell: ({value, row}) => (<EditCourse course={row} link={value} updateCourse={this.updateCourse} fetchCourses={this.fetchCourses} />),
+            Cell: ({value, row}) => (<EditStudent student={row} link={value} updateStudent={this.updateStudent} fetchStudents={this.fetchStudents} />),
         }, {
             id: 'delbutton',
             sortable: false,
@@ -109,10 +113,10 @@ class CourseList extends Component {
             <div className="App">
                 <Grid container>
                     <Grid item>
-                        <AddCourse addCourse={this.addCourse} fetchCourses={this.fetchCourses} />
+                        <AddStudent addStudent={this.addStudent} fetchStudents={this.fetchStudents} />
                     </Grid>
                 </Grid>
-                <ReactTable data={this.state.courses} columns={columns} filterable={true} />
+                <ReactTable data={this.state.students} columns={columns} filterable={true} />
                 <ToastContainer autoClose={1500} />
             </div>
         )
@@ -120,4 +124,4 @@ class CourseList extends Component {
     }
 }
 
-export default CourseList;
+export default StudentList;

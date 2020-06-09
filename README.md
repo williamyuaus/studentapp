@@ -1,68 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Student Management Front-end System
+The student management front-end system provides a responsive UI for a demo CRUD web-based app for student management.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+What things you need to install the software and how to install them
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- node
+- npm
+- Visual Studio Code 
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Installing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A step by step series of examples that tell you how to get a development env running
 
-### `npm run eject`
+**NOTE:** in order to save and retrieve data from the back-end, you need to install and run the student management back-end system before doing this. Please follow the instructions at: https://github.com/williamyuaus/studentsys.git
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Extract the project ZIP package
+2. Open Command Prompt or Terminal and move it into the project `\studentapp` folder: 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+cd studentapp
+```
+3. Then, you can run the app with the following command. This command runs the app in port `3000` and opens the app in a browser:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+npm start
+```
+![image](https://user-images.githubusercontent.com/60310380/84105202-f278c100-aa5a-11ea-8700-01ea475ee6ae.png)
+![image](https://user-images.githubusercontent.com/60310380/84104672-86498d80-aa59-11ea-8192-5c37a5b63d99.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. To access the source code, using the VS code to open the project folder, or clone the repository of the program: https://github.com/williamyuaus/studentapp.git
+5. In your browser, you can add, edit and delete students in the app, such as following screenshots:
+![image](https://user-images.githubusercontent.com/60310380/84104709-a416f280-aa59-11ea-853a-04eceb40126a.png)
+![image](https://user-images.githubusercontent.com/60310380/84104765-c872cf00-aa59-11ea-8b6b-aee180b97bb7.png)
+![image](https://user-images.githubusercontent.com/60310380/84104921-1ee00d80-aa5a-11ea-9317-1fe63547f5a1.png) 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Built With
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [React](https://reactjs.org/docs/getting-started.html) - The web framework used
+* [npm](https://docs.npmjs.com/) - Package Management
 
-### Code Splitting
+## Authors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* **William YU** - *Initial work* - [William YU](https://github.com/williamyuaus)
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
