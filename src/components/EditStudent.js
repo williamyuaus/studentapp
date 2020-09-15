@@ -15,7 +15,7 @@ const EditStudent = (props) => {
 
     // Open the modal form
     const handleOpen = () => {
-        setStudent({firstName: props.student.firstName, lastName: props.student.last})
+        setStudent({firstName: props.student.firstName, lastName: props.student.lastName})
         setOpen(true);
     }
 
