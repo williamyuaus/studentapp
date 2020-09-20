@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import ReactTable from "react-table";
 // import "react-table/react-table.css";
 import { toast, ToastContainer } from "react-toastify";
@@ -11,37 +11,32 @@ import EditCourse from "./EditCourse";
 import EnrolStudent from "./EnrolStudent";
 import { Link } from "react-router-dom";
 
-class CourseList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { courses: [] };
-  }
+const CourseList = (props) => {
+  const [courses, setCourses] = useState([]);
 
-  componentDidMount() {
-    this.fetchCourses();
-  }
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
-  fetchCourses = () => {
+  const fetchCourses = () => {
     console.log("FETCH");
     fetch(SERVER_URL + "api/courses")
       .then((response) => response.json())
       .then((responseData) => {
-        this.setState({
-          courses: responseData._embedded.courses,
-        });
+        setCourses(responseData._embedded.courses);
       })
       .catch((err) => console.error(err));
   };
 
   // Delete course
-  onDelClick = (link) => {
+  const onDelClick = (link) => {
     if (window.confirm("Are you sure to delete?")) {
       fetch(link, { method: "DELETE" })
         .then((res) => {
           toast.success("Course deleted", {
             position: toast.POSITION.BOTTOM_LEFT,
           });
-          this.fetchCourses();
+          fetchCourses();
         })
         .catch((err) => {
           toast.error("Error when deleting", {
@@ -53,7 +48,7 @@ class CourseList extends Component {
   };
 
   // Add new course
-  addCourse(course) {
+  const addCourse = (course) => {
     fetch(SERVER_URL + "api/courses", {
       method: "POST",
       headers: {
@@ -61,12 +56,12 @@ class CourseList extends Component {
       },
       body: JSON.stringify(course),
     })
-      .then((res) => this.fetchCourses())
+      .then((res) => fetchCourses())
       .catch((err) => console.error(err));
-  }
+  };
 
   // Update course
-  updateCourse(course, link) {
+  const updateCourse = (course, link) => {
     fetch(link, {
       method: "PUT",
       headers: {
@@ -78,91 +73,80 @@ class CourseList extends Component {
         toast.success("Changes saved", {
           position: toast.POSITION.BOTTOM_LEFT,
         });
-        this.fetchCourses();
+        fetchCourses();
       })
       .catch((err) =>
         toast.error("Error when saving", {
           position: toast.POSITION.BOTTOM_LEFT,
         })
       );
-  }
+  };
 
-  render() {
-    const columns = [
-      {
-        Header: "Course Name",
-        accessor: "name",
-        Cell: (name) => (
-          <Link to={"/course/" + name.value}> {name.value} </Link>
-        ),
-      },
-      {
-        sortable: false,
-        filterable: false,
-        width: 100,
-        accessor: "_links.self.href",
-        Cell: ({ value, row }) => (
-          <EnrolStudent
-            course={row}
-            link={value}
-            updateCourse={this.updateCourse}
-            fetchCourses={this.fetchCourses}
-          />
-        ),
-      },
-      {
-        sortable: false,
-        filterable: false,
-        width: 100,
-        accessor: "_links.self.href",
-        Cell: ({ value, row }) => (
-          <EditCourse
-            course={row}
-            link={value}
-            updateCourse={this.updateCourse}
-            fetchCourses={this.fetchCourses}
-          />
-        ),
-      },
-      {
-        id: "delbutton",
-        sortable: false,
-        filterable: false,
-        width: 100,
-        accessor: "_links.self.href",
-        Cell: ({ value }) => (
-          <Button
-            size="small"
-            color="secondary"
-            onClick={() => {
-              this.onDelClick(value);
-            }}
-          >
-            Delete
-          </Button>
-        ),
-      },
-    ];
-
-    return (
-      <div className="App">
-        <Grid container>
-          <Grid item>
-            <AddCourse
-              addCourse={this.addCourse}
-              fetchCourses={this.fetchCourses}
-            />
-          </Grid>
-        </Grid>
-        <ReactTable
-          data={this.state.courses}
-          columns={columns}
-          filterable={true}
+  const columns = [
+    {
+      Header: "Course Name",
+      accessor: "name",
+      Cell: (name) => <Link to={"/course/" + name.value}> {name.value} </Link>,
+    },
+    {
+      sortable: false,
+      filterable: false,
+      width: 100,
+      accessor: "_links.self.href",
+      Cell: ({ value, row }) => (
+        <EnrolStudent
+          course={row}
+          link={value}
+          updateCourse={updateCourse}
+          fetchCourses={fetchCourses}
         />
-        <ToastContainer autoClose={1500} />
-      </div>
-    );
-  }
-}
+      ),
+    },
+    {
+      sortable: false,
+      filterable: false,
+      width: 100,
+      accessor: "_links.self.href",
+      Cell: ({ value, row }) => (
+        <EditCourse
+          course={row}
+          link={value}
+          updateCourse={updateCourse}
+          fetchCourses={fetchCourses}
+        />
+      ),
+    },
+    {
+      id: "delbutton",
+      sortable: false,
+      filterable: false,
+      width: 100,
+      accessor: "_links.self.href",
+      Cell: ({ value }) => (
+        <Button
+          size="small"
+          color="secondary"
+          onClick={() => {
+            onDelClick(value);
+          }}
+        >
+          Delete
+        </Button>
+      ),
+    },
+  ];
+
+  return (
+    <div className="App">
+      <Grid container>
+        <Grid item>
+          <AddCourse addCourse={addCourse} fetchCourses={fetchCourses} />
+        </Grid>
+      </Grid>
+      <ReactTable data={courses} columns={columns} filterable={true} />
+      <ToastContainer autoClose={1500} />
+    </div>
+  );
+};
 
 export default CourseList;
