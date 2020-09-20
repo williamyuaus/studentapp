@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import AddStudent from "./AddStudent";
 import EditStudent from "./EditStudent";
 import { SERVER_URL } from "../constants";
+import { Link } from "react-router-dom";
 
 const StudentList = (props) => {
   const [students, setStudents] = useState([]);
@@ -84,6 +85,9 @@ const StudentList = (props) => {
     {
       Header: "First Name",
       accessor: "firstName",
+      Cell: (firstName) => (
+        <Link to={"/student/" + firstName.value}> {firstName.value} </Link>
+      ),
     },
     {
       Header: "Last Name",
