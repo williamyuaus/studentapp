@@ -8,6 +8,7 @@ import StudentList from "./components/StudentList";
 import { Route } from "react-router-dom";
 import CourseList from "./components/CourseList";
 import FeedbackPage from "./components/FeedbackPage";
+import ManageCoursePage from "./components/ManageCoursePage";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
       <img
         id="logo"
         name="logo"
-        src="https://www.integradev.com.au/images/iad.png"
-        alt="Integrated Application Development"
+        src="https://brightenedu.com.au/wp-content/uploads/2019/12/Logo1-1.png"
+        alt="Brighten Education"
+        width="6%"
       />
       <WeatherApp className="WeatherApp" />
       <AppBar position="static" color="default">
@@ -28,6 +30,7 @@ function App() {
       </AppBar>
       <Route path="/students" component={StudentList} />
       <Route path="/courses" component={CourseList} />
+      <Route path="/course/:name" component={ManageCoursePage} />
       <Route path="/student/:firstName" component={FeedbackPage} />
     </div>
   );

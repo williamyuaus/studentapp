@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactTable from "react-table";
-// import "react-table/react-table.css";
+import "react-table/react-table.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "@material-ui/core/Button";
@@ -86,7 +86,9 @@ const CourseList = (props) => {
     {
       Header: "Course Name",
       accessor: "name",
-      Cell: (name) => <Link to={"/course/" + name.value}> {name.value} </Link>,
+      Cell: (name, row) => (
+        <Link to={"/course/" + name.value}> {name.value} </Link>
+      ),
     },
     {
       sortable: false,
