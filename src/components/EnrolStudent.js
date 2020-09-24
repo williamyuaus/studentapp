@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, forwardRef } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import { SERVER_URL } from "../constants";
-import ReactTable from "react-table";
 import { Link } from "react-router-dom";
+import MaterialTable from "material-table";
 
 const EnrolStudent = (props) => {
   const [open, setOpen] = useState(false);
@@ -83,7 +82,19 @@ const EnrolStudent = (props) => {
       >
         <DialogTitle id="form-dialog-title">Enrol Student</DialogTitle>
         <DialogContent>
-          <ReactTable data={students} columns={columns} filterable={true} />
+          <div style={{ maxWidth: "100%" }}>
+            <MaterialTable
+              columns={[
+                { title: "First Name", field: "firstName" },
+                { title: "Last Name", field: "lastName" },
+              ]}
+              data={students}
+              title="Student List"
+              options={{
+                selection: true,
+              }}
+            />
+          </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
